@@ -4,6 +4,12 @@ from json import dumps
 import json
 from flask_cors import CORS
 
+# Initialize app and enable cors to it
+app = Flask(__name__)
+CORS(app)
+api = Api(app)
+
+# Register all the folder structures inside src and their path
 import sys
 import os
 
@@ -13,12 +19,8 @@ sys.path.append(os.path.join(project_root, 'src', 'service'))
 sys.path.append(os.path.join(project_root, 'src', 'repository'))
 sys.path.append(os.path.join(project_root, 'src', 'utilities'))
 
+# App controller REST routes
 import app_controller
-
-app = Flask(__name__)
-CORS(app)
-api = Api(app)
-
 api.add_resource(app_controller.SampleController, '/api/sampleapi')
 
 if __name__ == '__main__':
