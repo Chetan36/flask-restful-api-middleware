@@ -19,9 +19,17 @@ sys.path.append(os.path.join(project_root, 'src', 'service'))
 sys.path.append(os.path.join(project_root, 'src', 'repository'))
 sys.path.append(os.path.join(project_root, 'src', 'utilities'))
 
+# Database connection initiate
+import database_config
+
 # App controller REST routes
 import app_controller
 api.add_resource(app_controller.SampleController, '/api/sampleapi')
+
+# User controller REST routes
+import user_controller
+api.add_resource(user_controller.RegisterUser, '/api/user/register')
+api.add_resource(user_controller.GetAllUsers, '/api/user')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=3001)
