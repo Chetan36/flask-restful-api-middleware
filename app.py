@@ -29,7 +29,8 @@ api.add_resource(app_controller.SampleController, '/api/sampleapi')
 # User controller REST routes
 import user_controller
 api.add_resource(user_controller.RegisterUser, '/api/user/register')
-api.add_resource(user_controller.GetAllUsers, '/api/user')
+api.add_resource(user_controller.AllUsers, '/api/user')
+api.add_resource(user_controller.UserById, '/api/user/<string:user_id>')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=3001)
