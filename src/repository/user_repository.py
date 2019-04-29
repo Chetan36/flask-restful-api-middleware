@@ -41,7 +41,6 @@ def update(user_id, user):
     try:
         db_user = json.loads(dumps(user_collection.find_one({"id": int(user_id)})))
         final_document = copy.deepcopy(db_user)
-        user["_id"] = final_document["_id"]
         user["id"] = final_document["id"]
         user["updatedAt"] = datetime.datetime.now()
         user_collection.update({"id": int(user_id)}, user, upsert=True)
